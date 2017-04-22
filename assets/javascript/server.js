@@ -71,6 +71,8 @@ app.get("/api/wait", function(req, res) {
 
 // Create New Reservation - takes in JSON input
 app.post("/api/new", function(req, res) {
+     tables.empty();
+    waitList.empty();
   var newReservation = req.body;
 
   console.log(newReservation);
@@ -78,10 +80,7 @@ app.post("/api/new", function(req, res) {
   masterList.push(newReservation);
 
 
-
   for (var i = 0; i < masterList.length; i++) {
-    tables.empty();
-    waitList.empty();
     if (i < 5) {
       tables.push(masterList[i]);
     }
