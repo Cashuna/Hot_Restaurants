@@ -65,17 +65,6 @@ app.get("/tables.html", function(req, res) {
 // Route that sends the user to the Make Reservation Page
 app.get("/reserve.html", function(req, res) {
   res.sendFile(path.join(__dirname, "../../reserve.html"));
-
-  /*// req.body hosts is equal to the JSON post sent from the user
-  var newReservation = req.body;
-
-  console.log(newReservation);
-
-  // We then add the json the user sent to the character array
-  characters.push(newcharacter);
-
-  // We then display the JSON to the users
-  res.json(newcharacter);*/
 });
 
 // View currently reserved tables - provides JSON
@@ -86,6 +75,18 @@ app.get("/api/tables", function(req, res) {
 // View current wait list for tables - provides JSON
 app.get("/api/wait", function(req, res) {
   res.json(waitList);
+});
+
+// Create New Characters - takes in JSON input
+app.post("/api/new", function(req, res) {
+  var newReservation = req.body;
+  newReservation.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newcharacter);
+
+  characters.push(newcharacter);
+
+  res.json(newcharacter);
 });
 
 
