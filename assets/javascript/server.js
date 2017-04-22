@@ -18,22 +18,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Tables (DATA)
 // =============================================================
-var masterList = [{
-  name: "Yoda",
-  phoneNumber: "555555555",
-  email: "email@gmail.com",
-  unique_ID: "2000"
-}, {
-  name: "Leia",
-  phoneNumber: "555555555",
-  email: "email@gmail.com",
-  unique_ID: "8000"
-}, {
-  name: "Darth Maul",
-  phoneNumber: "555555555",
-  email: "email@gmail.com",
-  unique_ID: "5000"
-}];
+var masterList = [];
 
 var waitList = [];
 
@@ -71,24 +56,21 @@ app.get("/api/wait", function(req, res) {
 
 // Create New Reservation - takes in JSON input
 app.post("/api/new", function(req, res) {
+
   var newReservation = req.body;
 
   console.log(newReservation);
 
   masterList.push(newReservation);
 
-
-
-  for (var i = 0; i < masterList.length; i++) {
-    tables.empty();
-    waitList.empty();
-    if (i < 5) {
-      tables.push(masterList[i]);
+  if (masterList.length < 6) {
+      tables.push(req.body);
+      res.json(true);
     }
     else {
-      waitList.push(masterList[i]);
+      waitList.push(req.body);
+      res.json(false);
     }
-  }
 });
 
 
