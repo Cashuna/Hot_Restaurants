@@ -18,7 +18,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Tables (DATA)
 // =============================================================
-var tables = [{
+var masterList = [{
   name: "Yoda",
   phoneNumber: "555555555",
   email: "email@gmail.com",
@@ -35,17 +35,9 @@ var tables = [{
   unique_ID: "5000"
 }];
 
-var waitList = [{
-  name: "John Lennon",
-  phoneNumber: "555555555",
-  email: "email@gmail.com",
-  unique_ID: "jLen"
-}, {
-  name: "Ringo Starr",
-  phoneNumber: "555555555",
-  email: "email@gmail.com",
-  unique_ID: "ringo"
-}];
+var waitList = [];
+
+var tables = [];
 
 
 // Routes
@@ -83,7 +75,20 @@ app.post("/api/new", function(req, res) {
 
   console.log(newReservation);
 
-  tables.push(newReservation);
+  masterList.push(newReservation);
+
+
+
+  for (var i = 0; i < masterList.length; i++) {
+    tables.empty();
+    waitList.empty();
+    if (i < 5) {
+      tables.push(masterList[i]);
+    }
+    else {
+      waitList.push(masterList[i]);
+    }
+  }
 });
 
 
