@@ -58,12 +58,12 @@ app.get("/", function(req, res) {
 });
 
 // Route that sends the user to the View Tables Page
-app.get("/tables", function(req, res) {
+app.get("/tables.html", function(req, res) {
   res.sendFile(path.join(__dirname, "../../tables.html"));
 });
 
 // Route that sends the user to the Make Reservation Page
-app.get("/reserve", function(req, res) {
+app.get("/reserve.html", function(req, res) {
   res.sendFile(path.join(__dirname, "../../reserve.html"));
 
   /*// req.body hosts is equal to the JSON post sent from the user
