@@ -3,7 +3,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-//var hotRestaurant = require("./assets/javascript/app.js");
+var hotRestaurant = require("./app.js");
 
 // Sets up the Express App
 // =============================================================
@@ -53,8 +53,8 @@ var waitList = [{
 
 // Basic route that sends the user to the Home Page
 app.get("/", function(req, res) {
-  //res.sendFile(path.join(__dirname, "home.html"));
-  res.send("Working");
+  res.sendFile(path.join(__dirname, "home.html"));
+  //res.send("Working");
 });
 
 // Route that sends the user to the View Tables Page
