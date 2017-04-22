@@ -77,16 +77,13 @@ app.get("/api/wait", function(req, res) {
   res.json(waitList);
 });
 
-// Create New Characters - takes in JSON input
+// Create New Reservation - takes in JSON input
 app.post("/api/new", function(req, res) {
   var newReservation = req.body;
-  newReservation.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newcharacter);
+  console.log(newReservation);
 
-  characters.push(newcharacter);
-
-  res.json(newcharacter);
+  tables.push(newReservation);
 });
 
 
