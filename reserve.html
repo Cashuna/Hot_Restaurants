@@ -81,10 +81,13 @@
 
             $.post("/api/new", newReservation)
                 .done(function(data) {
-                    console.log(data);
                     alert("Adding reservation...");
+                    console.log(data);
                 });
-
+                $("#name").val("");
+                $("#phone").val("");
+                $("#email").val("");
+                $("#id").val("");
         });
     </script>
 </body>
