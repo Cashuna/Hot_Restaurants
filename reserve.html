@@ -23,10 +23,36 @@
         <div class="jumbotron" align="center">
             <h1><span class = "glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
             <hr>
-            <h2>We only have 5 tables! Book your seat before they all are gone!</h2>
+            <h2>Make Your Reservation</h2>
             <br>
             <p><a class="btn btn-primary btn-lg" href="tables.html" role="button"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> View Tables</a>
-                <a class="btn btn-danger btn-lg" href="reserve.html" role="button"><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span> Make Reservation</a></p>
+                <a class="btn btn-default btn-lg" href="home.html" role="button"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></p>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Table Reservation</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Unique ID</label>
+                        <input type="text" class="form-control" id="id">
+                    </div>
+                    <button type="submit" class="btn btn-primary add" id="add">Add Reservation</button>
+                </form>
+            </div>
         </div>
         <p><a href="#">API Table Link</a> | <a href="#">API Wait List</a></p>
     </div>
