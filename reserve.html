@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <p><a href="#">API Table Link</a> | <a href="#">API Wait List</a></p>
+        <p><a href="/api/tables">API Table Link</a> | <a href="/api/wait">API Wait List</a></p>
     </div>
     <!-- JavaScript -->
     <script type="text/javascript">
@@ -79,9 +79,10 @@
                 id: $("#id").val().trim()
             };
 
+            alert("Thank you. Your reservation has been added!");
+
             $.post("/api/new", newReservation)
                 .done(function(data) {
-                    alert("Adding reservation...");
                     console.log(data);
                 });
                 $("#name").val("");
