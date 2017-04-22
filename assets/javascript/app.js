@@ -1,35 +1,18 @@
-var fs = require("fs");
+$("#add-btn").on("click", function(event) {
+  event.preventDefault();
 
-var reservations =[];
-var waitlist = [];
+  var newReservation = {
+    name: $("#name").val().trim(),
+    role: $("#phone").val().trim(),
+    age: $("#email").val().trim(),
+    id: $("#id").val().trim()
+  };
 
-function UserReservations(name,phone,email,id){
-    this.name = name;
-    this.phone = phone;
-    this.email = email;
-    this.id = id;
-};
+  // Question: What does this code do??
+  $.post("/api/tables", newReservation)
+  .done(function(data) {
+    console.log(data);
+    alert("Adding reservation...");
+  });
 
-
-
-
-$("#add-btn").on("click", function() {
-    var makeReservation = $("#character-search").val().trim();
-
-    makeReservation = makeReservation.replace(/\s+/g, "").toLowerCase();
-
-    // $.get("/api/" + searchedCharacter, function(data) {
-        console.log(data);
-        if (data) {
-            $("#stats").show();
-            $("#name").text(data.name);
-            $("#phone").text(data.phone);
-            $("#email").text(data.email);
-            $("#id").text(data.id);
-        }
-        else {
-            $("#name").text("The force is not strong with this one. Your character was not found.");
-            $("#stats").hide();
-        }
-    // });
 });
