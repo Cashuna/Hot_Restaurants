@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -29,7 +32,7 @@
                 <h3 class="panel-title">Current Reservations</h3>
             </div>
             <div id="reservations" class="panel-body">
-                    Panel content
+
             </div>
         </div>
         <div class="panel panel-default">
@@ -37,22 +40,37 @@
                 <h3 class="panel-title">Waiting List</h3>
             </div>
             <div id="wait-list" class="panel-body">
-                Panel content
+
             </div>
         </div>
 
     <span>Control Panel</span> <br>
-    <span><a id="clear" href="#">Clear Table </a>|<a href="#"> API Table Link </a>|<a href="#"> API Wait List</a></span>
+    <span><a id="clear" href="#">Clear Table </a>|<a href="/api/tables"> API Table Link </a>|<a href="api/wait"> API Wait List</a></span>
 </div>
 
 </body>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script>
-    $("#clear").on("click", function(){
-        $("#reservations").empty();
-        $("#wait-list").empty();
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.get("/api/tables", function (table) {
+            for (var i = 0; i < table.length; i++) {
+                $("#reservations").append("<span>Name: " + table[i].name + "</span><br>");
+            }
+
+        });
+
+        $.get("/api/wait", function (wait) {
+            for (var i = 0; i < wait.length; i++) {
+                $("#wait-list").append("<span>Name: " + wait[i].name + "</span><br>");
+            }
+
+        });
+
+        $("#clear").on("click", function () {
+            $("#reservations").empty();
+            $("#wait-list").empty();
+        });
     });
+
 </script>
 </html>
