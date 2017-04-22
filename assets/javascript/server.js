@@ -3,7 +3,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var hotRestaurant = require("./app.js");
+//var hotRestaurant = require("./app.js");
 
 // Sets up the Express App
 // =============================================================
@@ -53,18 +53,29 @@ var waitList = [{
 
 // Basic route that sends the user to the Home Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
-
+  res.sendFile(path.join(__dirname, "../../home.html"));
+  //res.send("Working");
 });
 
 // Route that sends the user to the View Tables Page
 app.get("/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
+  res.sendFile(path.join(__dirname, "../../tables.html"));
 });
 
 // Route that sends the user to the Make Reservation Page
 app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+  res.sendFile(path.join(__dirname, "../../reserve.html"));
+
+  /*// req.body hosts is equal to the JSON post sent from the user
+  var newReservation = req.body;
+
+  console.log(newReservation);
+
+  // We then add the json the user sent to the character array
+  characters.push(newcharacter);
+
+  // We then display the JSON to the users
+  res.json(newcharacter);*/
 });
 
 // View currently reserved tables - provides JSON
@@ -77,19 +88,6 @@ app.get("/api/wait", function(req, res) {
   res.json(waitList);
 });
 
-// Create New Characters - takes in JSON input
-app.post("/api/reserve", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  var newcharacter = req.body;
-
-  console.log(newcharacter);
-
-  // We then add the json the user sent to the character array
-  characters.push(newcharacter);
-
-  // We then display the JSON to the users
-  res.json(newcharacter);
-});
 
 // Starts the server to begin listening
 // =============================================================
