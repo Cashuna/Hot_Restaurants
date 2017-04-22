@@ -3,8 +3,7 @@ var fs = require("fs");
 var reservations =[];
 var waitlist = [];
 
-
-exports.UserReservations= function(name,phone,email,id){
+function UserReservations(name,phone,email,id){
     this.name = name;
     this.phone = phone;
     this.email = email;
