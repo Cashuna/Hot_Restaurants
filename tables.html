@@ -54,14 +54,14 @@
     $(document).ready(function() {
         $.get("/api/tables", function (table) {
             for (var i = 0; i < table.length; i++) {
-                $("#reservations").append("<span>Name: " + table[i].name + "</span><br>");
+                $("#reservations").append("<div class='well well-sm'><span>Name: " + table[i].name + "</span></div><br>");
             }
 
         });
 
         $.get("/api/wait", function (wait) {
             for (var i = 0; i < wait.length; i++) {
-                $("#wait-list").append("<span>Name: " + wait[i].name + "</span><br>");
+                $("#wait-list").append("<div class='well well-sm'><span>Name: " + wait[i].name + "</span></div><br>");
             }
 
         });
